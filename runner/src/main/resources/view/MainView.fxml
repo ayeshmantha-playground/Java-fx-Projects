@@ -31,5 +31,10 @@
             <Image url="@../image/spaceship.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="gameOver" fitHeight="341.0" fitWidth="504.0" layoutX="465.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="465.0" AnchorPane.rightAnchor="464.0" AnchorPane.topAnchor="57.0">
+         <image>
+            <Image url="@../image/gameOver.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -1,5 +1,8 @@
 package lk.ijse.dep12.dashboard.control;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,13 +10,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class MainViewController {
 
     public AnchorPane detailContainer;
     public AnchorPane root;
+
+    public Label lblTime;
     @FXML
     private Label btnLogOut;
 
@@ -34,6 +42,16 @@ public class MainViewController {
     private Label btnViewReport;
 
     public void initialize() {
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            LocalTime currentTime = LocalTime.now();
+            String formattedTime = currentTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            lblTime.setText(formattedTime);
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+
+
         btnManageCustomer.setOnMouseClicked(mouseEvent -> {
             try {
                 AnchorPane root = FXMLLoader.load(getClass().getResource("/view/MangeCustomerView.fxml"));

@@ -22,12 +22,17 @@ public class ManiViewController {
     public ImageView background1;
     public ImageView background2;
     public ImageView spaceShip;
+    public ImageView gameOver;
 
     public void initialize() throws IOException {
         double astroY = astro.getLayoutY();
 
         Timeline timelineAlien = new Timeline(new KeyFrame(Duration.seconds(0.005), actionEvent -> {
-
+//            System.out.println(alien.getLayoutX());
+            if (astro.getLayoutY() + 100 >= alien.getLayoutY() && astro.getLayoutX() >= alien.getLayoutX()) {
+                gameOver.setVisible(true);
+                astro.setVisible(false);
+            }
             alien.setLayoutX(alien.getLayoutX() - 1.5);
             if (alien.getLayoutX() < -100) {
                 alien.setLayoutX(1350);
@@ -39,12 +44,15 @@ public class ManiViewController {
 
         Timeline timelineSpaceShip = new Timeline(new KeyFrame(Duration.seconds(0.005), actionEvent -> {
 
+            if (astro.getLayoutY() < spaceShip.getLayoutY() + 65 && astro.getLayoutX() > spaceShip.getLayoutX()) {
+                gameOver.setVisible(true);
+                astro.setVisible(false);
+            }
+
             spaceShip.setLayoutX(spaceShip.getLayoutX() - 3.5);
             if (spaceShip.getLayoutX() < -100) {
                 spaceShip.setLayoutX(1350);
             }
-
-
         }));
         timelineSpaceShip.setCycleCount(Animation.INDEFINITE);
         timelineSpaceShip.playFromStart();
@@ -52,16 +60,14 @@ public class ManiViewController {
         Timeline timelineBackground = new Timeline(new KeyFrame(Duration.seconds(0.005), actionEvent -> {
             background1.setLayoutX(background1.getLayoutX() - 3);
             background2.setLayoutX(background1.getLayoutX() + background1.getFitWidth());
-            System.out.println(background1.getLayoutX());
+//            System.out.println(background1.getLayoutX());
             if (background1.getLayoutX() <= -1270) {
                 background1.setLayoutX(0);
             }
         }));
         timelineBackground.setCycleCount(Animation.INDEFINITE);
         timelineBackground.playFromStart();
-
         
-
         Platform.runLater(() -> {
             root.getScene().setOnKeyPressed(keyEvent -> {
                 if (keyEvent.getCode() == KeyCode.UP || keyEvent.getCode() == KeyCode.SPACE) {

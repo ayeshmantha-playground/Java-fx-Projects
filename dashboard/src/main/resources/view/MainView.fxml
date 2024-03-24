@@ -67,5 +67,10 @@
          </font>
       </Label>
       <AnchorPane id="display" fx:id="detailContainer" layoutX="240.0" layoutY="51.0" prefHeight="646.0" prefWidth="756.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="51.0" />
+      <Label fx:id="lblTime" layoutX="26.0" layoutY="640.0" prefHeight="35.0" prefWidth="179.0" textFill="#5f9bc6">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

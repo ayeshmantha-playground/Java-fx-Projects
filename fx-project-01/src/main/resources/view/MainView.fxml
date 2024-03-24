@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" prefHeight="720.0" prefWidth="573.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep12.fx_project_1.control.MainViewController">
+   <children>
+      <ImageView fx:id="road" fitHeight="755.0" fitWidth="384.0" layoutX="102.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/road_edited.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="car" fitHeight="188.0" fitWidth="151.0" layoutX="133.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/car_edited.jpeg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

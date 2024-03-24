@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" maxWidth="1.7976931348623157E308" prefHeight="449.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep12.runner.control.ManiViewController">
+   <children>
+      <ImageView fx:id="background1" fitHeight="454.0" fitWidth="1270.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/backgroud1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="background2" fitHeight="454.0" fitWidth="1270.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/backgroud1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="astro" fitHeight="103.0" fitWidth="59.0" layoutX="37.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/astro.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="alien" fitHeight="111.0" fitWidth="112.0" layoutX="1133.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/alien.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="spaceShip" fitHeight="150.0" fitWidth="200.0" layoutX="1033.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/spaceship.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

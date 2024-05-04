@@ -8,41 +8,75 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="672.0" prefWidth="1027.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep12.notepad.control.MainViewController">
+<AnchorPane fx:id="anchorPane" prefHeight="672.0" prefWidth="1027.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep12.notepad.control.MainViewController">
    <children>
       <MenuBar layoutY="14.0" prefHeight="30.0" prefWidth="1027.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="New Window" />
-                  <MenuItem mnemonicParsing="false" text="Open" />
-                  <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Save as" />
+              <MenuItem mnemonicParsing="false" onAction="#btnNewOnAction" text="New">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#btnNewWindowOnAction" text="New Window">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="btnOpen" mnemonicParsing="false" onAction="#btnOpenOnAction" text="Open">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" text="Save">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#btnSaveAsOnAction" text="Save as">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" text="Page Setup" />
                   <MenuItem mnemonicParsing="false" text="Print" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Exit" />
+                  <MenuItem fx:id="btnExit" mnemonicParsing="false" onAction="#btnExitOnAction" text="Exit">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="F4" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Undo" />
-                  <MenuItem mnemonicParsing="false" text="Cut" />
-                  <MenuItem mnemonicParsing="false" text="Copy" />
-                  <MenuItem mnemonicParsing="false" text="Paste" />
-                  <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" onAction="#btnUndoOnAction" text="Undo">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#btnCutOnAction" text="Cut">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#btnCopyOnAction" text="Copy">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#btnPasteOnAction" text="Paste">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#btnDeleteOnAction" text="Delete">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="DELETE" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
                   <MenuItem mnemonicParsing="false" text="Search with Bing" />
-                  <MenuItem mnemonicParsing="false" text="Find" />
-                  <MenuItem mnemonicParsing="false" text="Find Next" />
-                  <MenuItem mnemonicParsing="false" text="Find Previous" />
-                  <MenuItem mnemonicParsing="false" text="Replace" />
+                  <MenuItem mnemonicParsing="false" onAction="#btnFindOnAction" text="Find" />
+                  <MenuItem mnemonicParsing="false" onAction="#btnFindNextOnAction" text="Find Next" />
+                  <MenuItem mnemonicParsing="false" onAction="#btnFindPreviousOnAction" text="Find Previous" />
+                  <MenuItem mnemonicParsing="false" onAction="#btnReplaceOnAction" text="Replace" />
                   <MenuItem mnemonicParsing="false" text="Go To" />
-                  <MenuItem mnemonicParsing="false" text="Select All" />
+                  <MenuItem mnemonicParsing="false" onAction="#btnSelectAllOnAction" text="Select All" />
                   <MenuItem mnemonicParsing="false" text="Time/Date" />
             </items>
           </Menu>
@@ -60,35 +94,50 @@
             </Menu>
             <Menu mnemonicParsing="false">
                <graphic>
-                  <Label fx:id="hlpMenu" text="Help" />
+                  <Label fx:id="hlpMenu" onMouseClicked="#hlpMenuSetOnMouseClicked" text="Help" />
                </graphic>
             </Menu>
         </menus>
       </MenuBar>
       <ScrollPane layoutY="29.0" prefHeight="621.0" prefWidth="1027.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
          <content>
-            <TextArea prefHeight="634.0" prefWidth="1026.0" />
+            <TextArea fx:id="txtContent" onKeyPressed="#txtContentOnKeyPressed" onMouseClicked="#txtContentOnMouseClicked" prefHeight="634.0" prefWidth="1026.0" />
          </content>
       </ScrollPane>
-      <Label layoutY="675.0" prefHeight="30.0" prefWidth="138.0" text="Ln 1, Col 1" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="889.0">
+      <Label layoutY="675.0" prefHeight="30.0" prefWidth="21.0" text="Ln" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1006.0">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Separator layoutX="135.0" layoutY="675.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="6.0" />
-      <Label layoutX="138.0" layoutY="673.0" prefHeight="30.0" prefWidth="74.0" text=" 100%">
+      <Separator layoutX="207.0" layoutY="675.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="6.0" />
+      <Label layoutX="212.0" layoutY="673.0" prefHeight="30.0" prefWidth="74.0" text=" 100%">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Separator layoutX="208.0" layoutY="676.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="6.0" />
-      <Separator layoutX="350.0" layoutY="677.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="6.0" />
-      <Label layoutX="211.0" layoutY="675.0" prefHeight="30.0" prefWidth="138.0" text=" Windows (CRLF)">
+      <Separator layoutX="281.0" layoutY="676.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="6.0" />
+      <Separator layoutX="419.0" layoutY="677.0" orientation="VERTICAL" prefHeight="30.0" prefWidth="6.0" />
+      <Label layoutX="283.0" layoutY="675.0" prefHeight="30.0" prefWidth="138.0" text=" Windows (CRLF)">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="355.0" layoutY="674.0" prefHeight="30.0" prefWidth="74.0" text="UTF - 8">
+      <Label layoutX="422.0" layoutY="674.0" prefHeight="30.0" prefWidth="74.0" text="UTF - 8">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="676.0" prefHeight="30.0" prefWidth="44.0" text=", Col ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lnLabel" layoutX="24.0" layoutY="675.0" prefHeight="30.0" prefWidth="44.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="clLabel" layoutX="108.0" layoutY="676.0" prefHeight="30.0" prefWidth="55.0">
          <font>
             <Font size="15.0" />
          </font>

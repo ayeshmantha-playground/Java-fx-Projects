@@ -43,12 +43,16 @@ public class FindViewController {
     public void btnFindNextOnAction(ActionEvent event) throws IOException {
         if (!txtFindNext.getText().isBlank()) {
             caretPosition = controller.txtContent.getCaretPosition();
+            System.out.println("compiled = " + compiled);
             if (!compiled) { //if text or radio button selection changed
                 find = txtFindNext.getText();
 
                 if (!chkMatchCase.isSelected()) {
+                    System.out.println("don't check case");
                     find = find.toLowerCase();
                     text = text.toLowerCase();
+                }else{
+                    System.out.println("check case");
                 }
 
                 pattern = Pattern.compile(find);

@@ -26,17 +26,10 @@ public class FindViewController {
 
 
     public void initialize() {
+        btnFindNext.setDisable(true);
         txtFindNext.textProperty().addListener((observable, oldValue, newValue) -> {
-            //todo: This is not working
-            if (newValue.isEmpty()) {
-                btnFindNext.setDisable(true);
-            }
+                btnFindNext.setDisable(newValue.isBlank());
         });
-
-//        new Thread(() -> {
-//            pattern = Pattern.compile(text);
-//        }).start();
-
     }
 
     public void btnCancelOnAction(ActionEvent event) {
@@ -54,8 +47,6 @@ public class FindViewController {
             }
 
             if (matcher.find()) {
-//                while (matcher.find()) {
-//                }
                 System.out.println("finding next index of word");
                 int startIndex = matcher.start();
                 int endIndex = matcher.end();
